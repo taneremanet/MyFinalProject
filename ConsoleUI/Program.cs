@@ -22,7 +22,7 @@ namespace ConsoleUI
             //    Console.WriteLine(product.ProductName);
             //}
 
-            foreach (var product in productManager.GetByUnitPrice(50, 100))
+            foreach (var product in productManager.GetByUnitPrice(40, 100))
             {
                 Console.WriteLine(product.ProductName);
             }

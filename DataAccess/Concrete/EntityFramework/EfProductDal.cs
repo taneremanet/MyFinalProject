@@ -54,8 +54,8 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (NorthwindContext context = new NorthwindContext())
             {
-                var deletedEntity = context.Entry(entity);
-                deletedEntity.State = EntityState.Deleted;
+                var updatedEntity = context.Entry(entity);
+                updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

@@ -20,13 +20,23 @@ namespace Business.Concrete
 
         public List<Product> GetAll()
         {
-            // is kodlari burada yazilacak
+            // is kodlari burada yazilacak (yetkisi var mi? gibi)
 
             // kural bir is sinifi baska bir sinifi new'lememeli
             //InMemoryProductDal ınMemoryProductDal = new InMemoryProductDal(); // hata, bagimlilik olur
 
             // bu sekilde IProductDal implemente etmis tum class'lar 
             return _productDal.GetAll();
+        }
+
+        public List<Product> GetAllByCategoryId(int id)
+        {
+            return _productDal.GetAll(p=>p.CategoryId == id);
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p=>p.UnitPrice >= min && p.UnitPrice <= max);
         }
     }
 }

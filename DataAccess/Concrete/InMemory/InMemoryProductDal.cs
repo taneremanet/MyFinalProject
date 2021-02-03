@@ -3,10 +3,13 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
+    // SOLID
+    // O - Open Closed Principle - Yazilima yeni bir ozellik ekliyorsan mevcut kodun degismemesi gerekiyor
     public class InMemoryProductDal : IProductDal
     {
         List<Product> _products; // class icin global degisken alt cizgili
@@ -71,6 +74,16 @@ namespace DataAccess.Concrete.InMemory
         public List<Product> GetAllByCategory(int categoryId)
         {
             return _products.Where(p => p.CategoryId == categoryId).ToList();
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }     
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

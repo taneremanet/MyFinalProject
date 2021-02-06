@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Abstract
+namespace Core.Entities
 {
     // veritabani nesnesi demek icin class'lari isaretleyecegiz
     // IEntity implement eden class bir veritabani tablosudur (Product, Category)

@@ -29,12 +29,14 @@ namespace ConsoleUI
             // DTO - Data Transformation Object
 
             // Iki tablodan join yaptik
-            ProductManager productManager = new ProductManager(new EfProductDal());
+            //ProductManager productManager = new ProductManager(new EfProductDal());
 
-            foreach (var product in productManager.GetProductDetails())
-            {
-                Console.WriteLine(product.ProductName + "/" + product.CategoryName);
-            }
+            //foreach (var product in productManager.GetProductDetails())
+            //{
+            //    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+            //}
+
+            ProductTest();
 
         }
 
@@ -48,14 +50,33 @@ namespace ConsoleUI
             }
         }
 
+        //private static void ProductTest()
+        //{
+        //    ProductManager productManager = new ProductManager(new EfProductDal());
+
+        //    foreach (var product in productManager.GetByUnitPrice(40, 100))
+        //    {
+        //        Console.WriteLine(product.ProductName);
+        //    }
+        //}
         private static void ProductTest()
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            foreach (var product in productManager.GetByUnitPrice(40, 100))
+            var result = productManager.GetProductDetails();
+
+            if (result.Success)
             {
-                Console.WriteLine(product.ProductName);
+                foreach (var product in result.Data)
+                {
+                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+         
         }
     }
 }

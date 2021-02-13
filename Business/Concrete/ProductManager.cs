@@ -21,6 +21,12 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        //[LogAspect] --> AOP // loglama icin kullanilacak
+        //[Validate]
+        //[RemoveCache]
+        //[Transaction]
+        //[Performance]
+        // Metot uzerinde yazarsan metot uzerinde, class uzerinde tum metotlarda calisir
         public IResult Add(Product product)
         {
             // business codes
@@ -48,7 +54,7 @@ namespace Business.Concrete
             // bu sekilde IProductDal implemente etmis tum class'lar 
             //return _productDal.GetAll();
 
-            //if (DateTime.Now.Hour == 22)
+            //if (DateTime.Now.Hour == 23)
             //{
             //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             //}

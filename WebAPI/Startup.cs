@@ -31,6 +31,9 @@ namespace WebAPI
         {
             services.AddControllers();
 
+            // Autofac bize AOP imkani sunuyor
+            // Autofac, Ninject, CastleWindsor, StructureMap, LightInject, DryInject --> IoC Container
+
             // IoC icin yazdik
             // Icinde data tutmuyorsak singleton uygun olur
             services.AddSingleton<IProductService, ProductManager>();

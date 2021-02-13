@@ -28,5 +28,7 @@ namespace Business.Abstract
         
         IResult Add(Product product);
         //Product Add(Product product);
+
+        // RESTFUL --> HTTP -->
     }
 }

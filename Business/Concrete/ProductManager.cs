@@ -1,10 +1,14 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,16 +31,41 @@ namespace Business.Concrete
         //[Transaction]
         //[Performance]
         // Metot uzerinde yazarsan metot uzerinde, class uzerinde tum metotlarda calisir
+        
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
             // business codes
+            // validation
 
-            if (product.ProductName.Length < 2)
-            {
-                // Magic strings
-                //return new ErrorResult("Ürün ismi en az 2 karakter olmalıdır.");
-                return new ErrorResult(Messages.ProductNameInvalid);
-            }
+            // business codes
+
+            //if (product.ProductName.Length < 2)
+            //{
+            //    // Magic strings
+            //    //return new ErrorResult("Ürün ismi en az 2 karakter olmalıdır.");
+            //    return new ErrorResult(Messages.ProductNameInvalid);
+            //}
+
+            //// ProductValidator
+            ////---------------------------
+            //var context = new ValidationContext<Product>(product);
+            //ProductValidator productValidator = new ProductValidator();
+            //var result = productValidator.Validate(context);
+            //if (!result.IsValid)
+            //{
+            //    throw new ValidationException(result.Errors);
+            //}
+
+            //
+            ValidationTool.Validate(new ProductValidator() ,product);
+            // Loglama
+            // cacherremove
+            // performance
+            // transaction
+            // yetkilendirme
+
+            // business codes
 
             _productDal.Add(product);
 
